@@ -10,3 +10,12 @@ export const createUser = async (req: Request, res: Response) => {
     res.status(400).send(err);
   }
 };
+
+export const getUsers = async (req: Request, res: Response) => {
+  try {
+    const users = await User.find();
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
