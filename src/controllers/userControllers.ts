@@ -74,3 +74,19 @@ export const getGreenClrLoverUsers = async (req: Request, res: Response) => {
     res.status(500).send(err);
   }
 };
+
+// Task 5: Task 5: Count the number of users whose favorite movie is "The Shawshank Redemption."
+export const getTheShawshankRedemptionLoverUsers = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const users = await User.aggregate([
+      { $match: { 'favorites.movie': 'The Shawshank Redemption' } },
+      { $count: 'totalUsers' },
+    ]);
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
