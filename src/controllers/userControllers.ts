@@ -90,3 +90,16 @@ export const getTheShawshankRedemptionLoverUsers = async (
     res.status(500).send(err);
   }
 };
+
+// Task 6: Update the zipcode of the user with the email "johndoe@example.com" to "10002".
+export const updateZipCode = async (req: Request, res: Response) => {
+  try {
+    const users = await User.updateOne(
+      { email: 'johndoe@example.com' },
+      { $set: { 'address.zipcode': '10002' } }
+    );
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
