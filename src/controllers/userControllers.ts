@@ -75,7 +75,7 @@ export const getGreenClrLoverUsers = async (req: Request, res: Response) => {
   }
 };
 
-// Task 5: Task 5: Count the number of users whose favorite movie is "The Shawshank Redemption."
+// Task 5: Count the number of users whose favorite movie is "The Shawshank Redemption."
 export const getTheShawshankRedemptionLoverUsers = async (
   req: Request,
   res: Response
