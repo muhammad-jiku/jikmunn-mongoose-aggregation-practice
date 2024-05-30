@@ -62,3 +62,15 @@ export const getPizzaLoverUsers = async (req: Request, res: Response) => {
     res.status(500).send(err);
   }
 };
+
+// Task 4: Find all users over 30 whose favorite color is "green".
+export const getGreenClrLoverUsers = async (req: Request, res: Response) => {
+  try {
+    const users = await User.aggregate([
+      { $match: { age: { $gt: 30 }, 'favorites.color': 'green' } },
+    ]);
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
