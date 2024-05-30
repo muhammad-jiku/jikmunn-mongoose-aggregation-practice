@@ -22,11 +22,27 @@ export const getUsers = async (req: Request, res: Response) => {
   }
 };
 
-// task one: get users in new york
+// Task 1: Find all users who are located in New York.
 export const getUsersInNewYork = async (req: Request, res: Response) => {
   try {
     const users = await User.aggregate([
       { $match: { 'address.city': 'New York' } },
+    ]);
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
+
+// Task 2: Find the user(s) with the email "johndoe@example.com" and retrieve their favorite movie.
+export const getUsersAndTheirFvrtMovies = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const users = await User.aggregate([
+      { $match: { email: 'johndoe@example.com' } },
+      { $project: { _id: 0, 'favorites.movie': 1 } },
     ]);
     res.status(200).send(users);
   } catch (err) {
