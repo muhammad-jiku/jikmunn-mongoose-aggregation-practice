@@ -49,3 +49,16 @@ export const getUsersAndTheirFvrtMovies = async (
     res.status(500).send(err);
   }
 };
+
+// Task 3: Find all users with "pizza" as their favorite food and sort them according to age.
+export const getPizzaLoverUsers = async (req: Request, res: Response) => {
+  try {
+    const users = await User.aggregate([
+      { $match: { 'favorites.food': 'pizza' } },
+      { $sort: { age: 1 } },
+    ]);
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
