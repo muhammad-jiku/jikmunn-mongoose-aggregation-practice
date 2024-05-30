@@ -5,6 +5,7 @@ import {
   getUsersInNewYork,
   getUsersAndTheirFvrtMovies,
   getPizzaLoverUsers,
+  getGreenClrLoverUsers,
 } from '../controllers/userControllers';
 
 const userRouter = Router();
@@ -17,5 +18,6 @@ userRouter.get(
   getUsersAndTheirFvrtMovies
 );
 userRouter.get('/favorite-food/pizza', getPizzaLoverUsers);
+userRouter.get('/favorite-color/green', getGreenClrLoverUsers);
 
 export default userRouter;
