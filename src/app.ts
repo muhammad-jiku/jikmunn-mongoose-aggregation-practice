@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import { config } from 'dotenv';
+import userRouter from './routes/userRoutes';
 config();
 
 export const app = express();
@@ -19,3 +20,5 @@ app.get('/', (req: Request, res: Response) => {
     message: 'Welcome here!',
   });
 });
+
+app.use('/api/v1/users', userRouter);
