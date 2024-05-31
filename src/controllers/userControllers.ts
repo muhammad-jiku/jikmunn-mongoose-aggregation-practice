@@ -138,8 +138,8 @@ export const getUsersByGroupOfFvrtFood = async (
   res: Response
 ) => {
   try {
-    const users = await await User.aggregate([
-      { $match: { '$favorites.food': 'pizza' } },
+    const users = await User.aggregate([
+      { $match: { 'favorites.food': 'pizza' } },
       { $group: { _id: null, averageAge: { $avg: '$age' } } },
       { $project: { _id: 0, averageAge: 1 } },
     ]);

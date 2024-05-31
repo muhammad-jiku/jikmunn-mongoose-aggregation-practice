@@ -10,6 +10,7 @@ import {
   updateZipCode,
   deleteUser,
   getUsersByGroupOfFvrtMovie,
+  getUsersByGroupOfFvrtFood,
 } from '../controllers/userControllers';
 
 const userRouter = Router();
@@ -30,5 +31,6 @@ userRouter.get(
 userRouter.put('/update/zip-code', updateZipCode);
 userRouter.delete('/delete', deleteUser);
 userRouter.get('/group/favorite-movies', getUsersByGroupOfFvrtMovie);
+userRouter.get('/group/favorite-food/pizza', getUsersByGroupOfFvrtFood);
 
 export default userRouter;
