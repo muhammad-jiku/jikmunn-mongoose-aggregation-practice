@@ -116,3 +116,18 @@ export const deleteUser = async (req: Request, res: Response) => {
     res.status(500).send(err);
   }
 };
+
+// Task 8: Group users by their favorite movie and retrieve the average age in each movie group.
+export const getUsersByGroupOfFvrtMovie = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const users = await await User.aggregate([
+      { $group: { _id: '$favorites.movie', averageAge: { $avg: '$age' } } },
+    ]);
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
