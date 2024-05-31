@@ -8,6 +8,7 @@ import {
   getGreenClrLoverUsers,
   getTheShawshankRedemptionLoverUsers,
   updateZipCode,
+  deleteUser,
 } from '../controllers/userControllers';
 
 const userRouter = Router();
@@ -26,5 +27,6 @@ userRouter.get(
   getTheShawshankRedemptionLoverUsers
 );
 userRouter.put('/update/zip-code', updateZipCode);
+userRouter.delete('/delete', deleteUser);
 
 export default userRouter;
