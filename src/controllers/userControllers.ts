@@ -105,3 +105,14 @@ export const updateZipCode = async (req: Request, res: Response) => {
     res.status(500).send(err);
   }
 };
+
+// Task 7: Delete the user with the email "alicewilliams@example.com" from the user data.
+export const deleteUser = async (req: Request, res: Response) => {
+  try {
+    const { email } = req.body; // email would be alicewilliams@example.com
+    const users = await User.findOneAndDelete({ email });
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
