@@ -131,3 +131,20 @@ export const getUsersByGroupOfFvrtMovie = async (
     res.status(500).send(err);
   }
 };
+
+// Task 9: Calculate the average age of users with "pizza" as their favorite food.
+export const getUsersByGroupOfFvrtFood = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const users = await await User.aggregate([
+      { $match: { '$favorites.food': 'pizza' } },
+      { $group: { _id: null, averageAge: { $avg: '$age' } } },
+      { $project: { _id: 0, averageAge: 1 } },
+    ]);
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
