@@ -94,9 +94,11 @@ export const getTheShawshankRedemptionLoverUsers = async (
 // Task 6: Update the zipcode of the user with the email "johndoe@example.com" to "10002".
 export const updateZipCode = async (req: Request, res: Response) => {
   try {
-    const users = await User.updateOne(
-      { email: 'johndoe@example.com' },
-      { $set: { 'address.zipcode': '10002' } }
+    const { email, zipcode } = req.body; // email would be johndoe@example.com and zipcode would be 10002
+    const users = await User.findOneAndUpdate(
+      { email },
+      { $set: { 'address.zipcode': zipcode } },
+      { new: true }
     );
     res.status(200).send(users);
   } catch (err) {

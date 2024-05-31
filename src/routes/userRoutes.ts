@@ -7,6 +7,7 @@ import {
   getPizzaLoverUsers,
   getGreenClrLoverUsers,
   getTheShawshankRedemptionLoverUsers,
+  updateZipCode,
 } from '../controllers/userControllers';
 
 const userRouter = Router();
@@ -24,5 +25,6 @@ userRouter.get(
   '/favorite-movie/the-shawshank-redemption',
   getTheShawshankRedemptionLoverUsers
 );
+userRouter.put('/update/zip-code', updateZipCode);
 
 export default userRouter;
