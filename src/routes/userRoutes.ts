@@ -9,6 +9,7 @@ import {
   getTheShawshankRedemptionLoverUsers,
   updateZipCode,
   deleteUser,
+  getUsersByGroupOfFvrtMovie,
 } from '../controllers/userControllers';
 
 const userRouter = Router();
@@ -28,5 +29,6 @@ userRouter.get(
 );
 userRouter.put('/update/zip-code', updateZipCode);
 userRouter.delete('/delete', deleteUser);
+userRouter.get('/group/favorite-movies', getUsersByGroupOfFvrtMovie);
 
 export default userRouter;
