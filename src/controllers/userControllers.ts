@@ -214,3 +214,17 @@ export const getUsersByCalcOfTotalFriends = async (
     res.status(500).send(err);
   }
 };
+
+// Task 15: Find the user(s) with the longest name.
+export const getUsersByLongestName = async (req: Request, res: Response) => {
+  try {
+    const users = await User.aggregate([
+      { $project: { nameLength: { $strLenCP: '$name' }, name: 1, email: 1 } },
+      { $sort: { nameLength: -1 } },
+      { $limit: 1 },
+    ]);
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
