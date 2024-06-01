@@ -17,6 +17,7 @@ import {
   getUsersByCalcOfTotalFriends,
   getUsersByLongestName,
   getUsersByStatesOfAddress,
+  getUsersByHighestFriends,
 } from '../controllers/userControllers';
 
 const userRouter = Router();
@@ -47,5 +48,6 @@ userRouter.get('/group/common-favorite-food', getUsersByCommonFvrtFood);
 userRouter.get('/total-friends', getUsersByCalcOfTotalFriends);
 userRouter.get('/longest-name', getUsersByLongestName);
 userRouter.get('/state', getUsersByStatesOfAddress);
+userRouter.get('/highest-friends', getUsersByHighestFriends);
 
 export default userRouter;
