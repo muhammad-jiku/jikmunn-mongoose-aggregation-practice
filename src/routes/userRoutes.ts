@@ -14,6 +14,7 @@ import {
   getUsersByGroupOfFvrtColorAndTotalNumbersOfThem,
   getUsersByHighestAge,
   getUsersByCommonFvrtFood,
+  getUsersByCalcOfTotalFriends,
 } from '../controllers/userControllers';
 
 const userRouter = Router();
@@ -41,5 +42,6 @@ userRouter.get(
 );
 userRouter.get('/highest-age', getUsersByHighestAge);
 userRouter.get('/group/common-favorite-food', getUsersByCommonFvrtFood);
+userRouter.get('/total-friends', getUsersByCalcOfTotalFriends);
 
 export default userRouter;
