@@ -197,3 +197,20 @@ export const getUsersByCommonFvrtFood = async (req: Request, res: Response) => {
     res.status(500).send(err);
   }
 };
+
+// Task 14: Calculate the total count of friends across all users.
+export const getUsersByCalcOfTotalFriends = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const users = await User.aggregate([
+      { $project: { friendsCount: { $size: '$friends' } } },
+      { $group: { _id: null, totalFriends: { $sum: '$friendsCount' } } },
+      { $project: { _id: 0, totalFriends: 1 } },
+    ]);
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
