@@ -148,3 +148,18 @@ export const getUsersByGroupOfFvrtFood = async (
     res.status(500).send(err);
   }
 };
+
+// Task 11: Group users by their favorite color and retrieve the count of users in each color group.
+export const getUsersByGroupOfFvrtColorAndTotalNumbersOfThem = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const users = await User.aggregate([
+      { $group: { _id: '$favorites.color', count: { $sum: 1 } } },
+    ]);
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
