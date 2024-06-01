@@ -243,3 +243,17 @@ export const getUsersByStatesOfAddress = async (
     res.status(500).send(err);
   }
 };
+
+// Task 17: Find the user(s) with the highest number of friends.
+export const getUsersByHighestFriends = async (req: Request, res: Response) => {
+  try {
+    const users = await User.aggregate([
+      { $project: { name: 1, email: 1, friendsCount: { $size: '$friends' } } },
+      { $sort: { friendsCount: -1 } },
+      { $limit: 1 },
+    ]);
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
