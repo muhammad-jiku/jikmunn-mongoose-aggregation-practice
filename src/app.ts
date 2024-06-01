@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import { config } from 'dotenv';
 import userRouter from './routes/userRoutes';
+import orderRouter from './routes/orderRoutes';
 config();
 
 export const app = express();
@@ -22,3 +23,4 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/orders', orderRouter);
