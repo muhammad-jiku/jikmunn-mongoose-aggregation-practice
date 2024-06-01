@@ -11,6 +11,7 @@ import {
   deleteUser,
   getUsersByGroupOfFvrtMovie,
   getUsersByGroupOfFvrtFood,
+  getUsersByGroupOfFvrtColorAndTotalNumbersOfThem,
 } from '../controllers/userControllers';
 
 const userRouter = Router();
@@ -32,5 +33,9 @@ userRouter.put('/update/zip-code', updateZipCode);
 userRouter.delete('/delete', deleteUser);
 userRouter.get('/group/favorite-movies', getUsersByGroupOfFvrtMovie);
 userRouter.get('/group/favorite-food/pizza', getUsersByGroupOfFvrtFood);
+userRouter.get(
+  '/group/favorite-color',
+  getUsersByGroupOfFvrtColorAndTotalNumbersOfThem
+);
 
 export default userRouter;
