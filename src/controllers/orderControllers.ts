@@ -21,3 +21,26 @@ export const getOrders = async (req: Request, res: Response) => {
     res.status(500).send(err);
   }
 };
+
+// Task 10: Perform a lookup aggregation to retrieve the orders data along with the customer details for each order.
+export const getOrdersByCustomerDetails = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const orders = await Order.aggregate([
+      {
+        $lookup: {
+          from: 'customers',
+          localField: 'customer_id',
+          foreignField: '_id',
+          as: 'customerDetails',
+        },
+      },
+      { $unwind: '$customerDetails' },
+    ]);
+    res.status(200).send(orders);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
