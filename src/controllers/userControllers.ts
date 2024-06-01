@@ -163,3 +163,23 @@ export const getUsersByGroupOfFvrtColorAndTotalNumbersOfThem = async (
     res.status(500).send(err);
   }
 };
+
+// Task 12: Find the user(s) with the highest age.
+export const getUsersByHighestAge = async (req: Request, res: Response) => {
+  try {
+    const users = await User.aggregate([
+      { $sort: { age: -1 } },
+      { $limit: 1 },
+      {
+        $project: {
+          name: 1,
+          email: 1,
+          age: 1,
+        },
+      },
+    ]);
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
