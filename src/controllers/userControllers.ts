@@ -228,3 +228,18 @@ export const getUsersByLongestName = async (req: Request, res: Response) => {
     res.status(500).send(err);
   }
 };
+
+// Task 16: Calculate each state's total number of users in the address field.
+export const getUsersByStatesOfAddress = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const users = await User.aggregate([
+      { $group: { _id: '$address.state', count: { $sum: 1 } } },
+    ]);
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
