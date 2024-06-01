@@ -12,6 +12,7 @@ import {
   getUsersByGroupOfFvrtMovie,
   getUsersByGroupOfFvrtFood,
   getUsersByGroupOfFvrtColorAndTotalNumbersOfThem,
+  getUsersByHighestAge,
 } from '../controllers/userControllers';
 
 const userRouter = Router();
@@ -37,5 +38,6 @@ userRouter.get(
   '/group/favorite-color',
   getUsersByGroupOfFvrtColorAndTotalNumbersOfThem
 );
+userRouter.get('/highest-age', getUsersByHighestAge);
 
 export default userRouter;
