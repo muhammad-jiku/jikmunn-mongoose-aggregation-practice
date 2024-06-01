@@ -185,7 +185,7 @@ export const getUsersByHighestAge = async (req: Request, res: Response) => {
 };
 
 // Task 13: Find the most common favorite food among all users.
-export const getUsersCommonFvrtFood = async (req: Request, res: Response) => {
+export const getUsersByCommonFvrtFood = async (req: Request, res: Response) => {
   try {
     const users = await User.aggregate([
       { $group: { _id: '$favorites.food', count: { $sum: 1 } } },
