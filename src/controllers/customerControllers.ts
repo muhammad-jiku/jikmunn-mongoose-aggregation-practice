@@ -11,3 +11,13 @@ export const createCustomer = async (req: Request, res: Response) => {
     res.status(400).send(err);
   }
 };
+
+// get all customers
+export const getCustomers = async (req: Request, res: Response) => {
+  try {
+    const customers = await Customer.find();
+    res.status(200).send(customers);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};

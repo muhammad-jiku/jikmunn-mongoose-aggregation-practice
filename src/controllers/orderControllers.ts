@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import Order from '../models/Order';
 
-// create oreders
+// create orders
 export const createOrder = async (req: Request, res: Response) => {
   try {
     const order = new Order(req.body);
